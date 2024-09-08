@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-uuid-deployment
+  labels:
+    app: uuid-node
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: uuid-node
+  template:
+    metadata:
+      labels:
+        app: uuid-node
+    spec:
+      containers:
+        - name: uuid-node
+          image: rlawncks125/uuid-node:latest
+          ports:
+            - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: test-nginx-service
+spec:
+  type: LoadBalancer 
+  selector:
+    app: uuid-node 
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+      nodePort: 30888
