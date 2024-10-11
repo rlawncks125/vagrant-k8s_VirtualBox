@@ -99,3 +99,21 @@ curl 127.0.0.1:30888
 ```
 ![image](https://github.com/user-attachments/assets/443a3644-62fc-4e9f-8532-fbe30c146400)
 
+
+
+# 에러
+## Command: ["startvm", "7e424515-4462-4336-8c14-190d03964fc7", "--type", "headless"] 에러
+
+**이유**
+window 24H2 버전에서 헤드리스로 올리면 생기는 에러로 임시로 gui로 vm 올리게함
+
+**임시방편**
+```
+config.vm.provider "virtualbox" do |v|
+  # window 24H2 버전에서 헤드리스로 올리면 생기는 에러로 임시로 gui로 vm 올리게함
+  v.gui = true
+end
+```
+
+
+
