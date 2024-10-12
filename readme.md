@@ -95,7 +95,8 @@ source ~/.bashrc
 kubectl apply -f test-node.yaml
 
 # 2. 요청 확인
-curl 127.0.0.1:30888
+curl 127.0.0.1:30888 // node loadbalancer
+curl 127.0.0.1:30999 // nginx
 ```
 ![image](https://github.com/user-attachments/assets/443a3644-62fc-4e9f-8532-fbe30c146400)
 
